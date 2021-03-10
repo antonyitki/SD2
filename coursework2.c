@@ -10,8 +10,8 @@ Do it before 12 of March 2021. 20% total mark module.
 
 
 #define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <ctype.h>
+#include <stdio.h>//header for work with files.
+#include <ctype.h>//header necessary for functions to uppercase and lowercase.
 #include <string.h>
 
 
@@ -49,7 +49,7 @@ void convert_upper(char* INPUT_FILE, char* OUTPUT_FILEUPPER) {
 	    done:   ret
 	}
 ************************************************************************************************************************/
-        fputc(toupper(c), outputFile);
+        fputc(toupper(c), outputFile);//build in function to convert to upper case characters.
     }
     // 4. Close all file files for save changes.
     fclose(inputFile);
@@ -57,6 +57,7 @@ void convert_upper(char* INPUT_FILE, char* OUTPUT_FILEUPPER) {
 }
 
 
+//Next function is practically same like before, but oposite behaviour.
 void convert_lower(char* INPUT_FILE, char* OUTPUT_FILELOWER) {
     FILE* inputFile = fopen(INPUT_FILE, "rt");
     if (NULL == inputFile) {
@@ -69,7 +70,7 @@ void convert_lower(char* INPUT_FILE, char* OUTPUT_FILELOWER) {
     //Read the content of the input file, make it lowercase and write result to new text file.
 	int c;
     while (EOF != (c = fgetc(inputFile))) {
-        fputc(tolower(c), outputFile);
+        fputc(tolower(c), outputFile);//build in function to convert to lower case characters.
     }
     fclose(inputFile);
     fclose(outputFile);
@@ -104,13 +105,13 @@ int count_words(char* INPUT_FILE) {
             if (ch == '\n') { ++linecount; }
         }
         if (charcount > 0) {
-            ++linecount;
-            ++wordcount;
+            ++linecount;//increase by 1 the line counter
+            ++wordcount;//increase by 1 the word counter
         }
     }
     else {
-        printf("Failed to open the file\n");
-    }
+        printf("Failed to open the file\n");//message in screen.
+    }//3 messages will be printed on the screen.
     printf("Lines : %d \n", linecount);
     printf("Words : %d \n", wordcount);
     printf("Characters : %d \n", charcount);
@@ -152,13 +153,13 @@ int main(int argc, char** argv)
 	printf("outputfilename : %s \n", &outputfilename);
 	printf("Cmd : %s \n", &Cmd);
 	if(!strcmp(Cmd,"-u")){
-		convert_upper(inputfilename, outputfilename);
+		convert_upper(inputfilename, outputfilename);//calling function to uppercase.
 	}
 	else if(!strcmp(Cmd,"-l")){
-		convert_lower(inputfilename, outputfilename);
+		convert_lower(inputfilename, outputfilename);//calling function to lowercase.
 	}
 	else if(!strcmp(Cmd,"-c")){
-		count_words(inputfilename);
+		count_words(inputfilename);//calling function to counting...
 	}
 	else{
 		printf("error2 \n");//if not u, l or c, error will be printed on screen.	
@@ -178,4 +179,6 @@ __asm{
 }
 These 6 lines can be used 3 times in each counter
 ***********************************************************************************************************************/
+
+
 
